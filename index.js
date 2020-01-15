@@ -1,0 +1,49 @@
+const mqtt = require("mqtt");
+
+const apiKey = "69a1ee068d4d0286a0c33c8467a1548cff583dad3a4744d2fca98e053d57b866";
+const client = mqtt.connect("mqtt://localhost", {
+	password : apiKey, //"69a1ee068d4d0286a0c33c8467a1548cff583dad3a4744d2fca98e053d57b866",
+	username : apiKey, //"1-oven-"
+//	password : "fa5ad2d60e15f6ab3f93f4eb8bc84cfe187eb8c40792990e7175d1d1eed54d01",
+//	username : "1-flaka"
+});
+
+const serializeMessage = JSON.stringify;
+
+client.on("connect", () => {
+	console.log("subscribg...");
+	client.subscribe(`device/${apiKey}/receive`, (err) => {
+		if(err) console.error(err);
+	})
+
+	client.publish(`device/${apiKey}/emit`, `{"command": "connect"}`);
+});
+
+client.on("message", (topic, message) => {
+	console.log("got message: ",topic, message.toString());
+	
+	try {
+		const receivedMessage = JSON.parse(message.toString());
+		console.log(receivedMessage);
+		if(!receivedMessage.command) return;
+
+		switch(receivedMessage.command){
+			case "status": { 
+				console.log("Responding to status command..");
+				client.publish(`device/${apiKey}/emit`, serializeMessage({
+					command: "status",
+					message : "online"
+				}));
+				break;
+			}
+		}
+		
+	} catch(e){
+		console.error(e);
+	}
+	
+	if(topic === apiKey){
+		const receivedMessage = message.toString()
+		console.log(receivedMessage)
+	}
+});
