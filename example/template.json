@@ -1,0 +1,173 @@
+{
+    "orientation" : "portrait",
+    "control" : [
+        {
+            "type": "tabs",
+            "tabs" : [
+                {
+                    "label" : "Strip 1",
+                    "type" : "tab",
+                    "content" : [
+                        {
+                            "type" : "section",
+                            "label" : "Non-reactive effects",
+                            
+                            "content" : [
+                                {
+                                    "type": "button-toggle-bar",
+                                    "action": "set-effect",
+                                    "state" : "CURRENT_EFFECT",
+                                    "buttons": [
+                                        {
+                                            "label": "Off",
+                                            "value": "off"
+                                        },
+                                        {
+                                            "label": "Calibration",
+                                            "value": "mood"
+                                        },
+                                        {
+                                            "label": "Fire",
+                                            "value": "fire"
+                                        },
+                                        {
+                                            "label": "Runner",
+                                            "value": "runner"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type" : "section",
+                            "label" : "Reactive effects",
+                            "content" : [
+                                {
+                                    "type": "button-toggle-bar",
+                                    "action": "set-effect",
+                                    "state" : "CURRENT_EFFECT",
+                                    "buttons": [
+                                        {
+                                            "label": "Scroll",
+                                            "value" : "scroll"
+                                        },
+                                        {
+                                            "label": "Energy",
+                                            "value": "energy"
+                                        },
+                                        {
+                                            "label": "Reactive Runner",
+                                            "value": "reactive-runner"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type" : "section",
+                            "label" : "Brightness",
+                            "content" : [
+                                {
+                                    "type" : "slider",
+                                    "action" : "set-brightness",
+                                    "state" : "BRIGHTNESS",
+                                    "min" : 0,
+                                    "max" : 100,
+                                    "step" : 10
+                                }
+                            ]
+                        },
+                        {
+                            "type" : "section",
+                            "label" : "Effect options",
+                            "content": [
+                                {
+                                    "type" : "tabs",
+                                    "subtype" : "secondary",
+                                    "tabs" : [
+                                        {
+                                            "label": "Scroll",
+                                            "type": "tab",
+                                            "content" : [
+
+                                                        {
+                                                            "type": "button-toggle-bar",
+                                                            "action": "set-effect",
+                                                            "buttons": [
+                                                                {
+                                                                    "label": "Something",
+                                                                    "value": "off"
+                                                                }
+                                                            ]
+
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type" : "tab",
+                                            "label" : "Something",
+                                            "content" : [
+                                                {
+                                                    "type": "button-toggle-bar",
+                                                    "action": "set-effect",
+                                                    "buttons": [
+                                                        {
+                                                            "label": "Off",
+                                                            "value": "off"
+                                                        },
+                                                        {
+                                                            "label": "Calibration",
+                                                            "value": "mood"
+                                                        },
+                                                        {
+                                                            "label": "Fire",
+                                                            "value": "fire"
+                                                        },
+                                                        {
+                                                            "label": "Runner",
+                                                            "value": "runner"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+
+
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type" : "tab",
+                    "label" : "Strip 2",
+                    "content" : [
+                        {
+                            "type": "button-toggle-bar",
+                            "action": "set-effect",
+                            "buttons": [
+                                {
+                                    "label": "Off",
+                                    "value": "off"
+                                },
+                                {
+                                    "label": "Calibration",
+                                    "value": "mood"
+                                },
+                                {
+                                    "label": "Fire",
+                                    "value": "fire"
+                                },
+                                {
+                                    "label": "Runner",
+                                    "value": "runner"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
