@@ -3,10 +3,12 @@
     "control" : [
         {
             "type": "tabs",
+            "local-state": "active-device",
             "tabs" : [
                 {
                     "label" : "Strip 1",
                     "type" : "tab",
+                    "value": "0",
                     "content" : [
                         {
                             "type" : "section",
@@ -15,6 +17,8 @@
                             "content" : [
                                 {
                                     "type": "button-toggle-bar",
+                                    "rounded": true,
+                                    "color": "info",
                                     "action": "set-effect",
                                     "state" : "CURRENT_EFFECT",
                                     "buttons": [
@@ -23,8 +27,24 @@
                                             "value": "off"
                                         },
                                         {
+                                            "label": "Multiple",
+                                            "value": "multiple"
+                                        },
+                                        {
                                             "label": "Calibration",
-                                            "value": "mood"
+                                            "value": "calibration"
+                                        },
+                                        {
+                                            "label": "Fade",
+                                            "value": "fade"
+                                        },
+                                        {
+                                            "label": "Gradient",
+                                            "value": "gradient"
+                                        },
+                                        {
+                                            "label": "Single",
+                                            "value": "single"
                                         },
                                         {
                                             "label": "Fire",
@@ -33,6 +53,10 @@
                                         {
                                             "label": "Runner",
                                             "value": "runner"
+                                        },
+                                        {
+                                            "label": "Sleep",
+                                            "value": "sleep"
                                         }
                                     ]
                                 }
@@ -44,6 +68,8 @@
                             "content" : [
                                 {
                                     "type": "button-toggle-bar",
+                                    "rounded": true,
+                                    "color": "info",
                                     "action": "set-effect",
                                     "state" : "CURRENT_EFFECT",
                                     "buttons": [
@@ -56,24 +82,42 @@
                                             "value": "energy"
                                         },
                                         {
+                                            "label": "Wavelength",
+                                            "value": "wavelength"
+                                        },
+                                        {
+                                            "label": "Spectrum",
+                                            "value": "spectrum"
+                                        },
+                                        {
+                                            "label": "Wave",
+                                            "value": "wave"
+                                        },
+                                        {
                                             "label": "Reactive Runner",
                                             "value": "reactive-runner"
+                                        },
+                                        {
+                                            "label": "Power",
+                                            "value": "power"
+                                        },
+
+                                        {
+                                            "label": "Bars",
+                                            "value": "auto"
+                                        },
+                                        {
+                                            "label": "Auto",
+                                            "value": "auto"
+                                        },
+                                        {
+                                            "label" : "Sync",
+                                            "toggleable" : true,
+                                            "state" : "SYNC",
+                                            "action" : "set-sync"
                                         }
+
                                     ]
-                                }
-                            ]
-                        },
-                        {
-                            "type" : "section",
-                            "label" : "Brightness",
-                            "content" : [
-                                {
-                                    "type" : "slider",
-                                    "action" : "set-brightness",
-                                    "state" : "BRIGHTNESS",
-                                    "min" : 0,
-                                    "max" : 100,
-                                    "step" : 10
                                 }
                             ]
                         }
@@ -83,3 +127,4 @@
         }
     ]
 }
+        

@@ -4,10 +4,25 @@ const template = require("./template");
 
 const state = {
     CURRENT_EFFECT: "off",
-    BRIGHTNESS: 20
+    BRIGHTNESS: 20,
+    SYNC: false
 };
 
+viot.on("set-sync", (data) => {
+    console.log(data)
+    state.SYNC = data
+    viot.setState("SYNC", data);
+})
+
 viot.on("set-effect", (data) => {
+    console.log("my effect is", data)
+
+    console.log("my effect is", data)
+    console.log("my effect is", data)
+    console.log("my effect is", data)
+    console.log("my effect is", data)
+    console.log("my effect is", data)
+    console.log("my effect is", data)
     // Verify 'data' is valid here
     viot.setState("CURRENT_EFFECT", data);
 
