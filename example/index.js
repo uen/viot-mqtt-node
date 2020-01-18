@@ -9,24 +9,16 @@ const state = {
 };
 
 viot.on("set-sync", (data) => {
-    console.log(data)
+    console.log("Sync is now ", data ? "on" : "off");
     state.SYNC = data
     viot.setState("SYNC", data);
 })
 
 viot.on("set-effect", (data) => {
-    console.log("my effect is", data)
-
-    console.log("my effect is", data)
-    console.log("my effect is", data)
-    console.log("my effect is", data)
-    console.log("my effect is", data)
-    console.log("my effect is", data)
-    console.log("my effect is", data)
-    // Verify 'data' is valid here
-    viot.setState("CURRENT_EFFECT", data);
+    console.log("Effect changed to:", data)
 
     state.CURRENT_EFFECT = data;
+    viot.setState("CURRENT_EFFECT", data);
 });
 
 viot.on("set-brightness", (data) => {
