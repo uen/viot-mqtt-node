@@ -30,9 +30,9 @@ viot.on("set-brightness", (data) => {
 
 const options = {
     debug: true,
-    template,
+//    template,
     defaultState: state,
-    apiKey: "69a1ee068d4d0286a0c33c8467a1548cff583dad3a4744d2fca98e053d57b866",
+    apiKey: "8df654a9723775dbd66a217e145214bc1ae5b33602b421099d59af461e549972",
 };
 
 viot.initialize(options)
