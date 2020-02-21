@@ -46,17 +46,19 @@ const initialize = (opts) => {
 	const options = {...defaultOptions, ...opts};
 	if(!options.apiKey) 
 		return console.error("viot: No device API key provided");
-	if(!options.template)
-		return console.error("viot: No template provided");
+	//if(!options.template)
+	//	return console.error("viot: No template provided");
 	if(!options.defaultState)
 		return console.warn("viot: No default state provided");
 
-	const template = validateTemplate(options.template);
-	if(!template) return console.error("viot: Invalid template provided");
+	if(options.template){
+		template = validateTemplate(options.template);
+		if(!template) return console.error("viot: Invalid template provided");
+		viotTemplate = template	
+	}
 
 	if(options.defaultState && typeof options.defaultState !== "object") return console.error("viot: Invalid default state provided")
 
-	viotTemplate = template;
 	viotState = options.defaultState;
 
 	const client = mqtt.connect(options.host, {
@@ -65,7 +67,7 @@ const initialize = (opts) => {
 	});
 
 	const updateState = (state) => {
-		console.log("logged state change. Sending new state:", viotState)
+		console.log("viot: State changed, sending new state", viotState)
 		client.publish(`device/${options.apiKey}/emit`, JSON.stringify({
 			command: "state",
 			message: viotState 
@@ -81,7 +83,7 @@ const initialize = (opts) => {
 			if(err) console.error("viot", err);
 		});
 	
-		client.publish(`device/${options.apiKey}/emit`, `{"command": "connect"}`);
+		client.publish(`device/${options.apiKey}/emit`, '{"command": "connect"}');
 	});
 
 	client.on("message", (topic, message) => {	
@@ -109,7 +111,7 @@ const initialize = (opts) => {
 					if(options.debug) console.debug("viot: Responding to template request");
 					client.publish(`device/${options.apiKey}/emit`, JSON.stringify({
 						command: "template",
-						message : {template: viotTemplate, state: viotState}
+						message : {...(viotTemplate ? {template: viotTemplate} : {}), state: viotState}
 					}));
 
 					break;
